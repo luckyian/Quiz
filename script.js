@@ -1,12 +1,12 @@
+var timerEl = document.querySelector("#timer");
 
-
+// Countdown timer function
 function startQuiz() {
-    // Created the countdown timer.
   
     var timeLeft = 45;
   
     var timeInterval = setInterval(function () {
-      countdownEl.textContent = timeLeft + "Timer";
+      timerEl.textContent = timeLeft + "Timer";
       timeLeft--;
   
       if (timeLeft === -1) {
@@ -14,4 +14,4 @@ function startQuiz() {
         highscore();
       }
     }, 1000);
-  }
+  };
