@@ -1,11 +1,11 @@
-var timerEl = document.querySelector("#timer");
+let timerEl = document.querySelector("#timer");
 
 // Countdown timer function
 function startQuiz() {
   
-    var timeLeft = 45;
+    let timeLeft = 60;
   
-    var timeInterval = setInterval(function () {
+    let timeInterval = setInterval(function () {
       timerEl.textContent = timeLeft + "Timer";
       timeLeft--;
   
