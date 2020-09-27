@@ -7,6 +7,9 @@ let answerTwo = document.querySelector("#a2");
 let answerThree = document.querySelector("#a3");
 let answerFour = document.querySelector("#a4");
 
+function getStarted(){
+  let questionEl.textContent("Do you want to start the quiz?")
+}
 
 
 
