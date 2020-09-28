@@ -1,28 +1,27 @@
 
 
 .timer {
-    background-color: black;
-    text-decoration-color: blanchedalmond;
+    background-color: red;
+    text-decoration-color: white;
 
 };
 
-.h1 {
-background-color: cornflowerblue;
-
-};
-
-.a1 {
+#a1 {
+   
     display: none;
 };
 
-.a2 {
+#a2 {
+   
     display: none;
 };
 
-.a3 {
+#a3 {
+    
     display: none;
 };
 
-.a4 {
+#a4 {
+    
     display: none;
 };
