@@ -18,7 +18,8 @@ let realAnswer = ["Who wants to know?", "Answer 2", "Answer 3", "Answer 4", "Ans
 let questions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix];
 let currentQuestionIndex = 0;
 let score = 0;
-let secondsLeft = 90;
+let secondsLeft = 45;
+var timerInterval;
 
 function areYouReady() {
   let firstAnswer = confirm("Do you want to start the quiz?");
@@ -36,7 +37,7 @@ function areYouReady() {
 
 
 function setTime() {
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     timerEl.textContent = secondsLeft + " Time Remaining ";
 
@@ -61,6 +62,7 @@ function checkAnswer() {
     console.log(score);
     askQ();
   }
+  
   // Decrease time on wrong answer
   else {
     timerLeft - 5;
@@ -95,12 +97,13 @@ function buttonFill() {
 
 function askQ() {
 
-  if (currentQuestionIndex <= questions.length) {
+  if (currentQuestionIndex <= questions.length - 1) {
     buttonFill();
     questionFill();
   }
   // Returns the user score and asks for initials, saves initials and hiogh score to local machine
   else {
+    clearInterval(timerInterval);
     let finalScore = parseInt(score);
     alert("Your score is " + finalScore)
     let highScoreCon = confirm("Would you like to save your high score?");
@@ -109,15 +112,17 @@ function askQ() {
       parseInt(score);
 
       var highScore = {
-        initials: initials.value,
-        score: score.value,
+        initials: initials,
+        score: finalScore,
       };
-
+      console.log(score, initials);
       // Saves high scores to local machine
-      var highScores = JSON.parse(localStorage.getItem("highScores"));
-      highScores = highScores + highScore;
+      var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+      highScores.push(highScore);
       localStorage.setItem("highScores", JSON.stringify(highScores));
       console.log(highScores);
+      window.location.href = "highscore.html";
     }
   }
 };
