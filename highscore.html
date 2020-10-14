@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High Scores</title>
-    
-    <style rel="stylesheet" href="reset.css" ></style>
-    <style rel="stylesheet" href="styles.css" ></style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Scores</title>
+
+  <style rel="stylesheet" href="reset.css"></style>
+  <style rel="stylesheet" href="styles.css"></style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+
 <body>
   <!-- Added container to hold the high score list -->
   <!-- Gave the container a flex option to help with appearance on small screen devices -->
-  <div class = "container col-4-md mx-auto w-50 d-flex">
-   
+  <div class="container col-4-md mx-auto w-50 d-flex">
+
     <article class="card" style="width: 50rem;">
-    <img src="./Assets/HighScore.jpg" class="card-img-top" alt="High Score">
-    <div class="card-body">
-      <p class="card-text">
+      <img src="./Assets/HighScore.jpg" class="card-img-top" alt="High Score">
+      <div class="card-body">
+        <p class="card-text">
         <ul class="high-score-list">
-          
+
 
 
         </ul>
 
-      </p>
-    </div>
-   </article>
+        </p>
+        <a href="index.html"><button>Go Back</button></a>
+      </div>
+    </article>
   </div>
 
-    <script src = ./script.js></script>
+  <script>
+    let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    
+    let highScoresListEl = document.querySelector(".high-score-list");
+
+    function renderhighScores() {
+      // Clear todoList element and update todoCountSpan
+      highScoresListEl.innerHTML = "";
+      highScoresListEl.textContent = highScores.length;
+
+      // Render a new li for each todo
+      for (var i = 0; i < highScores.length; i++) {
+        var highScores = highScores[i];
+
+        let li = document.createElement("<li>");
+        li.textContent = highScores;
+        highScoresListEl.appendChild(li);
+      }
+    };
+    renderhighScores();
+
+
+
+  </script>
 </body>
+
 </html>
