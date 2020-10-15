@@ -16,7 +16,7 @@ In this homework project I used the  index.html, style.css, and script.js to cre
 * Bootstrap
 
 ### Published link:
-https://luckyian.github.io/hw4/index.html
+https://luckyian.github.io/homework-4/
 
 #### Contributer:
 
