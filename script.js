@@ -8,17 +8,17 @@ let answerThree = document.querySelector("#a3");
 let answerFour = document.querySelector("#a4");
 let questionsEl = document.querySelector(".Questions");
 
-let questionOne = ["Who is Jimmy Ray?", "A dreamer", "Who wants to know?", "A beliver", "Your mom"]
-let questionTwo = ["Question 2?", "Answer 1", "Answer 2", "Answer 3", "Answer 4"];
-let questionThree = ["Question 3?", "Answer 1", "Answer 2", "Answer 3", "Answer 4"];
-let questionFour = ["Question 4?", "Answer 1", "Answer 2", "Answer 3", "Answer 4"];
-let questionFive = ["Question 5?", "Answer 1", "Answer 2", "Answer 3", "Answer 4"];
-let questionSix = ["Question 6?", "Answer 1", "Answer 2", "Answer 3", "Answer 4"];
-let realAnswer = ["Who wants to know?", "Answer 2", "Answer 3", "Answer 4", "Answer 1", "Answer 2"];
+let questionOne = ["How do you manipulate the DOM?", "HTML", "JavaScript", "CSS", "With my mind!!"]
+let questionTwo = ["How do you call the function: myFunction ?", "myFunction(GO!)", "GO my function!", "myFunction();", "let myFunction = 100;"];
+let questionThree = ["What is CSS used for?", "Skateboarding", "Making functions", "Saving data", "Styling HTML"];
+let questionFour = ["Who is credited with inventing JavaScript?", "Brendan Eich", "Steve Jobs", "Bill Gates", "Isaac Newton"];
+let questionFive = ["What was JavaScript originally called?", "CamalCase", "The Script", "Latte", "Mocha"];
+let questionSix = ["JavaScript originally appeared in what year>", "1964", "2010", "1995", "1986"];
+let realAnswer = ["JavaScript", "myFunction();", "Styling HTML", "Brendan Eich", "Mocha", "1995"];
 let questions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix];
 let currentQuestionIndex = 0;
 let score = 0;
-let secondsLeft = 45;
+let secondsLeft = 30;
 var timerInterval;
 
 function areYouReady() {
@@ -55,17 +55,17 @@ function checkAnswer() {
   console.log("button value" + this.value);
 
 
-  if ((this.value === realAnswer[currentQuestionIndex])) {
+  if (this.value === realAnswer[currentQuestionIndex]) {
     // Increase score on correct answer
     score++;
     currentQuestionIndex++;
     console.log(score);
     askQ();
   }
-  
+
   // Decrease time on wrong answer
   else {
-    timerLeft - 5;
+    secondsLeft = secondsLeft - 5;
     currentQuestionIndex++;
     console.log(score + "score");
     askQ();
