@@ -1,3 +1,4 @@
+// Global variables
 let highScoreList = document.querySelector("#high-score-list");
 let timerEl = document.querySelector(".timer");
 let questionEl = document.querySelector("#q");
@@ -13,7 +14,7 @@ let questionTwo = ["How do you call the function: myFunction ?", "myFunction(GO!
 let questionThree = ["What is CSS used for?", "Skateboarding", "Making functions", "Saving data", "Styling HTML"];
 let questionFour = ["Who is credited with inventing JavaScript?", "Brendan Eich", "Steve Jobs", "Bill Gates", "Isaac Newton"];
 let questionFive = ["What was JavaScript originally called?", "CamalCase", "The Script", "Latte", "Mocha"];
-let questionSix = ["JavaScript originally appeared in what year>", "1964", "2010", "1995", "1986"];
+let questionSix = ["JavaScript originally appeared in what year?", "1964", "2010", "1995", "1986"];
 let realAnswer = ["JavaScript", "myFunction();", "Styling HTML", "Brendan Eich", "Mocha", "1995"];
 let questions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix];
 let currentQuestionIndex = 0;
@@ -21,13 +22,14 @@ let score = 0;
 let secondsLeft = 30;
 var timerInterval;
 
+// Confirm to start quiz, if no, sends to high score page
 function areYouReady() {
   let firstAnswer = confirm("Do you want to start the quiz?");
   if (firstAnswer) {
     startQuiz();
   }
   else {
-    startQuiz();
+    window.location.href = "highscore.html";
   };
 
 
@@ -35,7 +37,7 @@ function areYouReady() {
 };
 
 
-
+// Function to create timer
 function setTime() {
   timerInterval = setInterval(function () {
     secondsLeft--;
@@ -52,11 +54,9 @@ function setTime() {
 function checkAnswer() {
   // Compare answers
 
-  console.log("button value" + this.value);
-
-
+  // Increase score on correct answer
   if (this.value === realAnswer[currentQuestionIndex]) {
-    // Increase score on correct answer
+    
     score++;
     currentQuestionIndex++;
     console.log(score);
@@ -73,6 +73,7 @@ function checkAnswer() {
 
 };
 // Fuctions to populate question and fill buttons with answers
+
 function questionFill() {
   questionEl.textContent = questions[currentQuestionIndex][0];
   console.log(currentQuestionIndex + "Qfill");
@@ -86,7 +87,7 @@ function buttonFill() {
   answerThree.textContent = questions[currentQuestionIndex][3];
   answerFour.textContent = questions[currentQuestionIndex][4];
 
-  // This the value for the button
+  // This is the value for the button
   answerOne.setAttribute("value", questions[currentQuestionIndex][1]);
   answerTwo.setAttribute("value", questions[currentQuestionIndex][2]);
   answerThree.setAttribute("value", questions[currentQuestionIndex][3]);
@@ -101,7 +102,7 @@ function askQ() {
     buttonFill();
     questionFill();
   }
-  // Returns the user score and asks for initials, saves initials and hiogh score to local machine
+  // Returns the user score and asks for initials, saves initials and high score to local machine
   else {
     clearInterval(timerInterval);
     let finalScore = parseInt(score);
@@ -116,6 +117,7 @@ function askQ() {
         score: finalScore,
       };
       console.log(score, initials);
+      
       // Saves high scores to local machine
       var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -132,8 +134,6 @@ function startQuiz() {
   console.log("Started Quiz")
 
 
-  // var button = document.createElement("button");
-
 
 
   answerOne.addEventListener("click", checkAnswer);
@@ -149,5 +149,5 @@ function startQuiz() {
 
   askQ();
 };
-
+// Runs function that asks if they want to start quiz
 areYouReady();
