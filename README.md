@@ -6,7 +6,7 @@ In this quiz I used the  index.html, style.css, and script.js to create a quiz t
 
 ## Screen Examples
 
-![Quiz.gif](\Assets\Demo.gif)
+![Quiz.gif](.\Assets\HTML_Quiz.gif)
 
 ## Built with the following tech:
 
